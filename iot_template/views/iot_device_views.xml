@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+
+    <record id="iot_device_form" model="ir.ui.view">
+        <field name="name">iot.device.form</field>
+        <field name="model">iot.device</field>
+        <field name="inherit_id" ref="iot.iot_device_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//div[@name='button_box']" position="inside">
+                <button name="%(iot_template.apply_template_action)s"
+                        context="{'default_device_id': active_id}"
+                        type="action"
+                        class="oe_stat_button"
+                        icon="fa-keyboard"
+                        attrs="{'invisible': ['|', ('input_count', '!=', 0), ('output_count','!=', 0)]}"
+                >
+                </button>
+            </xpath>
+        </field>
+    </record>
+
+</odoo>
