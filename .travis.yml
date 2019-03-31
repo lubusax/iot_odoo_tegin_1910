@@ -1,10 +1,11 @@
 language: python
-sudo: false
+sudo: required
 cache: pip
 
 python:
   - "3.5"
-
+services:
+  - rabbitmq
 addons:
   apt:
     packages:
