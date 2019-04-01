@@ -7,6 +7,15 @@ class IotDeviceConfigure(models.TransientModel):
 
     generated = fields.Boolean(default=False)
     serial = fields.Char(readonly=True)
+    url = fields.Char(compute='_compute_url')
+
+    @api.depends('serial')
+    def _compute_url(self):
+        for record in self:
+            if record.generated:
+                record.url = self.env['ir.config_parameter'].sudo().get_param(
+                    'web.base.url'
+                ) + '/iot/' + record.serial + '/configure'
 
     @api.multi
     def run(self):

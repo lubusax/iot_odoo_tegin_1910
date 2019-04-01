@@ -11,11 +11,11 @@
     'summary': 'IoT base module',
     'depends': [
         'iot_input',
-        'iot_input_sensor',
     ],
     'data': [
         'security/ir.model.access.csv',
         'wizard/iot_device_apply_template.xml',
+        'wizard/iot_device_configure.xml',
         'views/iot_device_views.xml',
     ],
 }
