@@ -7,5 +7,6 @@ class IotDeviceInput(models.Model):
     @api.multi
     def get_configuration(self):
         return {
-
+            'serial': self.serial,
+            'passphrase': self.passphrase,
         }

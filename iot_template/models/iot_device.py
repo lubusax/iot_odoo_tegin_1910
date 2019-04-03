@@ -8,6 +8,9 @@ class IotDevice(models.Model):
     def get_iot_configuration(self):
         self.ensure_one()
         return {
+            'host': self.env['ir.config_parameter'].sudo().get_param(
+                'web.base.url'
+            ),
             'name': self.name,
             'outputs': {
                 output.name: output.get_configuration()

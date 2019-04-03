@@ -43,6 +43,9 @@ class IotDeviceConfigure(models.TransientModel):
         template = self.env['iot.template'].search([
             ('name', '=', template_id)
         ])
+        import logging
+        logging.info(template)
+        logging.info(device)
         if template:
-            template.apply_template(device, {})
+            template.apply_template(device, template.auto_generate_key(serial))
         return device.get_iot_configuration()

@@ -34,6 +34,10 @@ class IotTemplate(models.Model):
     key_ids = fields.One2many('iot.template.key', inverse_name='template_id')
     parent_id = fields.Many2one('iot.template', ondelete='restrict')
 
+    def auto_generate_key(self, serial):
+        self.ensure_one()
+        return {'serial': serial}
+
     @api.multi
     def get_keys(self):
         keys = [key.key for key in self.key_ids]
