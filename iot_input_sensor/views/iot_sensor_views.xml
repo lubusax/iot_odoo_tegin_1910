@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+
+    <record id="iot_sensor_tree" model="ir.ui.view">
+        <field name="name">iot.sensor.tree</field>
+        <field name="model">iot.sensor</field>
+        <field name="arch" type="xml">
+            <tree delete="0">
+                <field name="name"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="iot_sensor_form" model="ir.ui.view">
+        <field name="name">iot.sensor.form</field>
+        <field name="model">iot.sensor</field>
+        <field name="arch" type="xml">
+            <form>
+                <header/>
+                <sheet>
+                    <div class="oe_button_box" name="button_box"/>
+                    <div class="oe_title">
+                        <h1>
+                            <field name="name"/>
+                        </h1>
+                    </div>
+                    <group>
+                        <group>
+                            <field name="query"/>
+                            <field name="restart_type"/>
+                            <field name="input_id"/>
+                        </group>
+                    </group>
+                    <notebook>
+                        <page id="value" string="Values">
+                            <field name="value_ids"/>
+                        </page>
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="iot_sensor_value_tree" model="ir.ui.view">
+        <field name="name">iot.sensor.value.tree</field>
+        <field name="model">iot.sensor.value</field>
+        <field name="arch" type="xml">
+            <tree delete="0" create="0">
+                <field name="date"/>
+                <field name="value"/>
+                <field name="min_value"/>
+                <field name="max_value"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="iot_sensor_value_form" model="ir.ui.view">
+        <field name="name">iot.sensor.value.form</field>
+        <field name="model">iot.sensor.value</field>
+        <field name="arch" type="xml">
+            <form>
+                <header/>
+                <sheet>
+                    <group>
+                        <field name="date"/>
+                        <field name="value"/>
+                        <field name="min_value"/>
+                        <field name="max_value"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record model="ir.actions.act_window" id="iot_sensor_action">
+        <field name="name">Sensors</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">iot.sensor</field>
+        <field name="view_type">form</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <menuitem name="Sensors"
+              sequence="70"
+              id="iot_sensor_menu"
+              action="iot_sensor_action"
+              parent="iot.iot_root_menu"
+    />
+
+</odoo>
