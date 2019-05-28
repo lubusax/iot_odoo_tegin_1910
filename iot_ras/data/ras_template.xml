@@ -10,9 +10,15 @@
     <record id="ras_template_input" model="iot.template.input">
         <field name="template_id" ref="ras_template"/>
         <field name="name">rfid_read</field>
+        <field name="call_model_id" eval="False"/>
+        <field name="call_function">iot_ras_default_action</field>
+        <field name="params">{'serial': '${key_serial}', 'passphrase': '${passphrase}'}</field>
+    </record>
+
+    <record id="ras_template_usage_hr_attendance" model="iot.template.input.usage">
+        <field name="template_input_id" ref="ras_template_input"/>
         <field name="call_model_id" ref="hr.model_hr_employee"/>
         <field name="call_function">register_attendance</field>
-        <field name="params">{'serial': '${key_serial}', 'passphrase': '${passphrase}'}</field>
     </record>
 
 </odoo>

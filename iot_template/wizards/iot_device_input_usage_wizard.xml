@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Copyright 2019 Creu Blanca
+     License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl). -->
+
+<odoo>
+
+    <record model="ir.ui.view" id="iot_device_input_usage_wizard_form_view">
+        <field name="name">iot.device.input.usage.wizard.form (in iot_template)</field>
+        <field name="model">iot.device.input.usage.wizard</field>
+        <field name="arch" type="xml">
+            <form string="Iot Device Input Usage Wizard">
+                <group>
+                    <field name="input_id" invisible="1"/>
+                    <field name="template_input_id" invisible="1"/>
+                    <field name="usage_id" options="{'no_create': True, 'no_open': True}"/>
+                </group>
+                <footer>
+                    <button name="doit"
+                            string="OK"
+                            class="btn-primary"
+                            type="object"/>
+                    <button string="Cancel"
+                            class="btn-default"
+                            special="cancel"/>
+                </footer>
+            </form>
+        </field>
+
+    </record>
+
+    <record model="ir.actions.act_window" id="iot_device_input_usage_wizard_act_window">
+        <field name="name">Iot Device Input Usage Wizard</field>
+        <field name="res_model">iot.device.input.usage.wizard</field>
+        <field name="view_mode">form</field>
+        <field name="target">new</field>
+    </record>
+
+
+</odoo>

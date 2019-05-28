@@ -19,4 +19,25 @@
         </field>
     </record>
 
+    <record id="iot_device_input_form" model="ir.ui.view">
+        <field name="name">iot.device.input.form</field>
+        <field name="model">iot.device.input</field>
+        <field name="inherit_id" ref="iot_input.iot_device_input_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//div[@name='button_box']">
+                <button name="%(iot_template.iot_device_input_usage_wizard_act_window)s"
+                        class="oe_stat_button"
+                        icon="fa-refresh"
+                        type="action"
+                        string="Change usage"
+                        context="{'default_template_input_id': template_input_id, 'default_input_id': active_id}"
+                        attrs="{'invisible': ['|', ('template_input_id', '=', False), ('usage_ids', '=', False)]}"
+                        >
+                    <field name="usage_ids" invisible="1"/>
+                    <field name="template_input_id" invisible="1"/>
+                </button>
+            </xpath>
+        </field>
+    </record>
+
 </odoo>

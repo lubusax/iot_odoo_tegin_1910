@@ -14,8 +14,10 @@
     ],
     'data': [
         'security/ir.model.access.csv',
-        'wizard/iot_device_apply_template.xml',
-        'wizard/iot_device_configure.xml',
+        'wizards/iot_device_input_usage_wizard.xml',
+        'wizards/iot_device_apply_template.xml',
+        'wizards/iot_device_configure.xml',
         'views/iot_device_views.xml',
+        'views/iot_template_views.xml',
     ],
 }

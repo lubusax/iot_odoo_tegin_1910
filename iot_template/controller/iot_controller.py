@@ -11,9 +11,6 @@ class CallIot(http.Controller):
         ], type='http', auth="none", methods=['POST'], csrf=False)
     def configure_iot(self, serial, *args, **kwargs):
         request = http.request
-        import logging
-        logging.info(serial)
-        logging.info(kwargs)
         template = kwargs.get('template', False)
         if not request.env:
             return json.dumps(False)
