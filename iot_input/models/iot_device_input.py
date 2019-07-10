@@ -15,6 +15,10 @@ class IotDeviceInput(models.Model):
         'iot.device.input.action', inverse_name='input_id', readonly=True,
     )
     action_count = fields.Integer(compute='_compute_action_count')
+    lang = fields.Selection(
+        selection=lambda self: self.env['res.lang'].get_installed(),
+        string='Language',
+    )
 
     @api.depends('action_ids')
     def _compute_action_count(self):
@@ -30,6 +34,8 @@ class IotDeviceInput(models.Model):
                 iot_device_name=self.device_id.name,
                 iot_device_id=self.device_id.id,
             )
+        if self.lang:
+            obj.with_context(lang=self.lang)
         return getattr(obj, self.call_function)(value)
 
     def parse_args(self, serial, passphrase):

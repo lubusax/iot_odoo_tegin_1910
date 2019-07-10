@@ -33,6 +33,7 @@
                         <group>
                             <field name="call_model_id" options="{'no_create':True}"/>
                             <field name="call_function"/>
+                            <field name="lang"/>
                         </group>
                     </group>
                     <notebook invisible="1"/>
