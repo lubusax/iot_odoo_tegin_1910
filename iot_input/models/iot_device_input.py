@@ -35,7 +35,7 @@ class IotDeviceInput(models.Model):
                 iot_device_id=self.device_id.id,
             )
         if self.lang:
-            obj.with_context(lang=self.lang)
+            obj = obj.with_context(lang=self.lang)
         return getattr(obj, self.call_function)(value)
 
     def parse_args(self, serial, passphrase):
